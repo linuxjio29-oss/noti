@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">NotificationBridge</string>
+    <string name="status_default">Checking access…</string>
+    <string name="grant_access">Grant Notification Access</string>
+</resources>
