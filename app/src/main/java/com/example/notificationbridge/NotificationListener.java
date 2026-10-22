@@ -28,7 +28,7 @@ public class NotificationListener extends NotificationListenerService {
             CharSequence title = ex.getCharSequence(Notification.EXTRA_TITLE);
             CharSequence text  = ex.getCharSequence(Notification.EXTRA_TEXT);
             CharSequence big   = ex.getCharSequence(Notification.EXTRA_BIG_TEXT);
-            CharSequence summ  = ex.getCharSequence(Notification.EXTRA_SUMMARY);
+            CharSequence summ  = ex.getCharSequence("android.summaryText");
             CharSequence convo = ex.getCharSequence(Notification.EXTRA_CONVERSATION_TITLE);
 
             // take the longest available text (OTP is usually in big text)
